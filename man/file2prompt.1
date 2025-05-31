@@ -1,0 +1,36 @@
+.TH FILE2PROMPT 1 "May 31, 2025" "1.0" "File2Prompt Manual"
+.SH NAME
+file2prompt \- generate markdown code blocks from files
+.SH SYNOPSIS
+.B file2prompt
+[\fIOPTIONS\fR] [\fIFILE_PATTERNS\fR]
+.SH DESCRIPTION
+File2Prompt is a command-line utility that searches for files matching specified patterns and outputs their contents as markdown code blocks. This is particularly useful for preparing code snippets to be used with AI prompt engineering.
+.SH OPTIONS
+.TP
+\fB\-r\fR, \fB\-\-recursive\fR
+Search recursively in subdirectories.
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Show help message and exit.
+.SH EXAMPLES
+.TP
+Process all shell scripts in current directory:
+.B file2prompt *.sh
+.TP
+Recursively process Python and JavaScript files:
+.B file2prompt -r *.py *.js
+.TP
+Process specific file:
+.B file2prompt Makefile
+.SH OUTPUT
+The tool prints the generated markdown code blocks to standard output (stdout) and any messages (such as found files) to standard error (stderr).
+.SH EXIT STATUS
+.TP
+0
+Success
+.TP
+1
+No files found or error
+.SH AUTHORS
+Developed by the Traineratwot

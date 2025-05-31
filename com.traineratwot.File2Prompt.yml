@@ -1,0 +1,18 @@
+app-id: com.traineratwot.File2Prompt
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: file2prompt
+finish-args:
+  - --share=network
+  - --filesystem=host
+modules:
+  - name: file2prompt
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 src/file2prompt.sh /app/bin/file2prompt
+      - install -Dm644 man/file2prompt.1 /app/share/man/man1/file2prompt.1
+      - gzip /app/share/man/man1/file2prompt.1
+    sources:
+      - type: dir
+        path: .

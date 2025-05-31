@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=File2Prompt
+Exec=file2prompt
+Icon=utilities-terminal
+Terminal=true
+Type=Application
+Categories=Utility;Development;
