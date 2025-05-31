@@ -51,6 +51,8 @@ file2prompt -r -d venv -d .venv -x __pycache__ *.py
 
 # JavaScript files excluding tests and node_modules
 file2prompt -x *.test.js -d node_modules *.js
+# multi-pattern
+file2prompt -r "*.cmd" "*.sh"
 ```
 
 ### 📋 Output
@@ -110,6 +112,8 @@ file2prompt -r -d venv -d .venv -x __pycache__ *.py
 
 # JavaScript файлы без тестов и node_modules
 file2prompt -x *.test.js -d node_modules *.js
+# multi-pattern
+file2prompt -r "*.cmd" "*.sh"
 ```
 
 ### 📤 Вывод
