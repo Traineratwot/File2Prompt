@@ -1,15 +1,21 @@
-.TH FILE2PROMPT 1 "May 31, 2025" "1.0" "File2Prompt Manual"
+.TH FILE2PROMPT 1 "June 1, 2025" "2.0" "File2Prompt Manual"
 .SH NAME
-file2prompt \- generate markdown code blocks from files
+file2prompt \- generate markdown code blocks from files with exclusion options
 .SH SYNOPSIS
 .B file2prompt
 [\fIOPTIONS\fR] [\fIFILE_PATTERNS\fR]
 .SH DESCRIPTION
-File2Prompt is a command-line utility that searches for files matching specified patterns and outputs their contents as markdown code blocks. This is particularly useful for preparing code snippets to be used with AI prompt engineering.
+File2Prompt searches for files matching specified patterns, applies exclusion rules, and outputs their contents as markdown code blocks. This is particularly useful for preparing code snippets to be used with AI prompt engineering while excluding unnecessary files and directories.
 .SH OPTIONS
 .TP
 \fB\-r\fR, \fB\-\-recursive\fR
 Search recursively in subdirectories.
+.TP
+\fB\-d\fR, \fB\-\-exclude-dir \fIPATTERN\fR
+Exclude directories matching the specified pattern. Can be used multiple times.
+.TP
+\fB\-x\fR, \fB\-\-exclude \fIPATTERN\fR
+Exclude files matching the specified pattern. Can be used multiple times.
 .TP
 \fB\-h\fR, \fB\-\-help\fR
 Show help message and exit.
@@ -18,19 +24,31 @@ Show help message and exit.
 Process all shell scripts in current directory:
 .B file2prompt *.sh
 .TP
-Recursively process Python and JavaScript files:
-.B file2prompt -r *.py *.js
+Recursively process Python files excluding virtual environments and cache files:
+.B file2prompt -r -d venv -d .venv -x __pycache__ *.py
 .TP
-Process specific file:
-.B file2prompt Makefile
+Process JavaScript files excluding node_modules and test files:
+.B file2prompt -x *.test.js -d node_modules *.js
+.TP
+Process all files except hidden files and build artifacts:
+.B file2prompt -x ".*" -x "*.o" -d build
 .SH OUTPUT
 The tool prints the generated markdown code blocks to standard output (stdout) and any messages (such as found files) to standard error (stderr).
 .SH EXIT STATUS
 .TP
 0
-Success
+Success (files found and processed)
 .TP
 1
 No files found or error
+.SH EXCLUSION LOGIC
+.TP
+Directory Exclusion (\fB-d\fR)
+Excludes any directory whose path contains the specified pattern. Matching is case-sensitive and works at any directory level.
+.TP
+File Exclusion (\fB-x\fR)
+Excludes files whose name matches the specified pattern. Uses standard shell wildcard patterns.
 .SH AUTHORS
 Developed by the Traineratwot
+.SH Github
+https://github.com/Traineratwot/File2Prompt

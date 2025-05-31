@@ -4,7 +4,6 @@ runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
 command: file2prompt
 finish-args:
-  - --share=network
   - --filesystem=host
 modules:
   - name: file2prompt
