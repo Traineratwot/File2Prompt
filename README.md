@@ -19,6 +19,7 @@
 
 ```bash
 git clone https://github.com/Traineratwot/File2Prompt.git
+cd File2Prompt
 sudo make install
 ```
 
@@ -78,6 +79,7 @@ file2prompt -r "*.cmd" "*.sh"
 
 ```bash
 git clone https://github.com/Traineratwot/File2Prompt.git
+cd File2Prompt
 sudo make install
 ```
 
